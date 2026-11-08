@@ -1,0 +1,117 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+}
+body{
+    background-color: black;
+    color: white;
+}
+main{
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(rgb(26,26,26),rgb(30,30,30),black);
+   padding: 20px;
+}
+section{
+    height: 100%;
+    width: 300px;
+    background-color:black;   
+    border-radius: 10px;
+    margin: auto;
+}
+.allreels{
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+.allreels::-webkit-scrollbar{
+    display: none;
+}
+.reel{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background-color: lightgreen;
+   overflow: hidden;
+   border-radius: 10px;
+   margin-bottom: 20px;
+   scroll-snap-align:start;
+   scroll-snap-stop:always;
+}
+.reel video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    
+}
+.reel .bottom{
+    padding: 30px 20px;
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.865));
+    position: absolute;
+    bottom: 0;
+}
+.bottom .user{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.bottom .user h4{
+    font-size: 15px;
+    font-weight: 500;
+}
+.bottom .user button{
+    background-color: transparent;
+    color: white;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 2px;
+    border: 1px solid white;
+}
+.user img{
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+    object-position: center;
+}
+.bottom h3{
+    font-size: 15px;
+    font-weight: 500;
+}
+.right{
+    width: 40px;
+    position: absolute;
+    padding: 15px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    gap: 10px;
+    right: 5%;
+    bottom: 22%;  
+}
+.right i{
+    font-weight: 500;
+    font-size: 20px;
+}
+.right h6{
+    font-size: 15px;
+    font-weight: 500;
+}
+.right>div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.love{
+    color: red;
+}
