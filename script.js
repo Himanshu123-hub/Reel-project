@@ -1,5 +1,6 @@
 let reels = [
     {
+        isMuted:"true",
         username: "rahul_sharma",
         likeCount: 12500,
         isLiked: false,
@@ -11,6 +12,7 @@ let reels = [
         isFollowed: false
     },
     {
+        isMuted:"true",
         username: "priya_singh",
         likeCount: 28400,
         isLiked: true,
@@ -22,6 +24,7 @@ let reels = [
         isFollowed: true
     },
     {
+        isMuted:"true",
         username: "arjun_verma",
         likeCount: 8700,
         isLiked: false,
@@ -33,6 +36,7 @@ let reels = [
         isFollowed: false
     },
     {
+        isMuted:"true",
         username: "sneha_gupta",
         likeCount: 45200,
         isLiked: false,
@@ -44,6 +48,7 @@ let reels = [
         isFollowed: true
     },
     {
+        isMuted:"true",
         username: "vikash_kumar",
         likeCount: 15600,
         isLiked: true,
@@ -55,6 +60,7 @@ let reels = [
         isFollowed: false
     },
     {
+        isMuted:"true",
         username: "anjali_mehta",
         likeCount: 32100,
         isLiked: false,
@@ -66,6 +72,7 @@ let reels = [
         isFollowed: true
     },
     {
+        isMuted:"true",
         username: "rohit_yadav",
         likeCount: 9800,
         isLiked: false,
@@ -77,6 +84,7 @@ let reels = [
         isFollowed: false
     },
     {
+        isMuted:"true",
         username: "neha_raj",
         likeCount: 56700,
         isLiked: true,
@@ -88,6 +96,7 @@ let reels = [
         isFollowed: true
     },
     {
+        isMuted:"true",
         username: "aman_singh",
         likeCount: 21300,
         isLiked: false,
@@ -99,6 +108,7 @@ let reels = [
         isFollowed: false
     },
     {
+        isMuted:"true",
         username: "kavya_mishra",
         likeCount: 39800,
         isLiked: false,
@@ -111,22 +121,29 @@ let reels = [
     }
 ];
 
+let allreels = document.querySelector(".allreels")
 
-let sum = ''
-reels.forEach(function(val){
+let isMuted = true
+
+function addData() {
+     let sum = ''
+reels.forEach(function(val,idx){
        sum = sum + `
        <div class="reel">
-                <video autoplay loop muted src="${val.video}"></video>
+                <video autoplay loop ${val.isMuted?'muted':''} src="${val.video}"></video>
+                   <div id="${idx}" class="mute">
+                      ${val.isMuted?'<i class="ri-volume-mute-fill"></i>':'<i class="ri-volume-up-line"></i>'}
+                   </div>
                 <div class="bottom">
                     <div class="user">
                         <img src="${val.userprofile}" alt="">
                         <h4>${val.username}</h4>
-                        <button>${val.isFollowed?'Unfollow':'Follow'}</button>
+                        <button id="${idx}" class="follow" >${val.isFollowed?'Unfollow':'Follow'}</button>
                     </div>
-                    <h3>${val.caption}</h3>
+         32qwert           <h3>${val.caption}</h3>
                 </div>
                 <div class="right">
-                    <div class="like">
+                    <div id=${idx} class="like">
                         <h4 class="like-icon">${val.isLiked?'<i class="love ri-heart-3-fill"></i>':'<i class="ri-heart-3-line"></i>'}</h4>
                         <h6>${val.likeCount}</h6>
                     </div>
@@ -145,7 +162,39 @@ reels.forEach(function(val){
             </div>
             `
 })
-
-let allreels = document.querySelector(".allreels")
 allreels.innerHTML = sum
+}
+addData()
 
+allreels.addEventListener("click",function(dets){
+  
+    if(dets.target.className == 'like'){
+    if(!reels[dets.target.id].isLiked){
+            reels[dets.target.id].likeCount++
+        reels[dets.target.id].isLiked = true
+    }else{
+         reels[dets.target.id].likeCount--
+        reels[dets.target.id].isLiked = false
+    }
+    addData()
+    }
+    if(dets.target.className == 'follow'){
+        if(!reels[dets.target.id].isFollowed){
+        reels[dets.target.id].isFollowed = true
+    }else{
+         reels[dets.target.id].isFollowed = false
+    }
+     addData()
+    }
+
+     if(dets.target.className == 'mute'){
+        if(!reels[dets.target.id].isMuted){
+        reels[dets.target.id].isMuted = true
+    }else{
+         reels[dets.target.id].isMuted = false
+    }
+     addData()
+    }
+
+   
+})
